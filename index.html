@@ -3,114 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SUBIN Portfolio</title>
+  <title>SUBIN — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <section class="intro-section" id="intro">
-    <div class="intro-copy">
-      <p>PORTFOLIO</p>
-      <h1>
-        Every click<br />
-        has a reason.
-      </h1>
-    </div>
+  <!-- ── INTRO SCENE ── -->
+  <section id="intro">
+    <div class="intro__bg"></div>
 
-    <div class="card-stage">
-      <div class="back-message">
-        클릭 한 번에도<br />
-        이유가 있어야 한다고 믿습니다.
-      </div>
-
-      <div class="card-stack">
-
-        <!-- 가장 먼저 떨어지는 명함 카드 -->
-        <button class="project-card name-card main-card" data-category="all">
-          <div class="name-card-top">
-            <p>CONNECT STORIES!<br />MAKE CULTURE</p>
-            <p>VARIETY<br />IDEAL</p>
-            <p>ENJOYABLE<br />BENEFICIAL</p>
+    <div class="business-card" id="businessCard">
+      <div class="card__inner">
+        <div class="card__front">
+          <div class="card__logo">S</div>
+          <div class="card__info">
+            <p class="card__name">SUBIN</p>
+            <p class="card__role">Creative Designer</p>
           </div>
-
-          <div class="subin-logo">
-            SUBIN
+          <div class="card__dots">
+            <span></span><span></span><span></span>
           </div>
-
-          <span>All Works</span>
-        </button>
-
-        <button class="project-card card-1" data-category="poster">
-          <span>Poster</span>
-        </button>
-
-        <button class="project-card card-2" data-category="uxui">
-          <span>UX/UI</span>
-        </button>
-
-        <button class="project-card card-3" data-category="web">
-          <span>Web</span>
-        </button>
-
-        <button class="project-card card-4" data-category="graphic">
-          <span>Graphic</span>
-        </button>
-
+        </div>
+        <div class="card__back">
+          <p class="card__back-text">PORTFOLIO<br/>2025</p>
+        </div>
       </div>
     </div>
 
-    <p class="scroll-hint">Choose a card</p>
+    <p class="intro__hint">scroll or click</p>
   </section>
 
-  <section class="portfolio-section" id="portfolio">
-    <div class="portfolio-header">
-      <div>
-        <p id="selectedCategory">Selected Works</p>
-        <h2>My Projects</h2>
-      </div>
-      <button class="back-btn" id="backBtn">Back to cards</button>
+  <!-- ── FAN CARDS SCENE ── -->
+  <section id="fanScene" class="hidden">
+    <div class="fan__title">
+      <span>SELECT</span>
+      <span class="fan__title-accent">A FIELD</span>
     </div>
 
-    <div class="project-grid">
-      <article class="grid-item">
-        <div class="thumb thumb-1"></div>
-        <p>Project 01</p>
-        <h3>Poster Design</h3>
-      </article>
+    <div class="fan__stage" id="fanStage">
 
-      <article class="grid-item">
-        <div class="thumb thumb-2"></div>
-        <p>Project 02</p>
-        <h3>UX/UI Renewal</h3>
-      </article>
+      <div class="fan-card" data-field="branding" data-color="#E8DDD0" data-accent="#1A1A1A" style="--idx:0">
+        <div class="fan-card__texture"></div>
+        <div class="fan-card__hover-label">Branding</div>
+        <div class="fan-card__sub">Identity · Logo · Typography</div>
+        <div class="fan-card__num">01</div>
+      </div>
 
-      <article class="grid-item">
-        <div class="thumb thumb-3"></div>
-        <p>Project 03</p>
-        <h3>Interactive Website</h3>
-      </article>
+      <div class="fan-card" data-field="motion" data-color="#1C1C2E" data-accent="#A3F7BF" style="--idx:1">
+        <div class="fan-card__texture"></div>
+        <div class="fan-card__hover-label">Motion</div>
+        <div class="fan-card__sub">Animation · After Effects · 3D</div>
+        <div class="fan-card__num">02</div>
+      </div>
 
-      <article class="grid-item">
-        <div class="thumb thumb-4"></div>
-        <p>Project 04</p>
-        <h3>Graphic System</h3>
-      </article>
+      <div class="fan-card" data-field="uxui" data-color="#F4E8FF" data-accent="#6B21FF" style="--idx:2">
+        <div class="fan-card__texture"></div>
+        <div class="fan-card__hover-label">UX/UI</div>
+        <div class="fan-card__sub">Product · Web · App</div>
+        <div class="fan-card__num">03</div>
+      </div>
 
-      <article class="grid-item">
-        <div class="thumb thumb-5"></div>
-        <p>Project 05</p>
-        <h3>Visual Archive</h3>
-      </article>
+      <div class="fan-card" data-field="illustration" data-color="#FFF0D9" data-accent="#FF5C00" style="--idx:3">
+        <div class="fan-card__texture"></div>
+        <div class="fan-card__hover-label">Illustration</div>
+        <div class="fan-card__sub">Character · Editorial · Print</div>
+        <div class="fan-card__num">04</div>
+      </div>
 
-      <article class="grid-item">
-        <div class="thumb thumb-6"></div>
-        <p>Project 06</p>
-        <h3>Brand Concept</h3>
-      </article>
+      <div class="fan-card" data-field="photography" data-color="#0A0A0A" data-accent="#E0E0E0" style="--idx:4">
+        <div class="fan-card__texture"></div>
+        <div class="fan-card__hover-label">Photography</div>
+        <div class="fan-card__sub">Still · Fashion · Concept</div>
+        <div class="fan-card__num">05</div>
+      </div>
+
     </div>
   </section>
 
-  <div class="transition-card" id="transitionCard"></div>
+  <!-- ── TRANSITION OVERLAY ── -->
+  <div id="transitionOverlay"></div>
+
+  <!-- ── PORTFOLIO GRID PAGE ── -->
+  <section id="portfolioPage" class="hidden">
+    <header class="port-header">
+      <button class="port-back" id="backBtn">← Back</button>
+      <h1 class="port-title" id="portTitle">Branding</h1>
+      <span class="port-count" id="portCount">6 works</span>
+    </header>
+
+    <div class="port-grid" id="portGrid"></div>
+  </section>
 
   <script src="script.js"></script>
 </body>
