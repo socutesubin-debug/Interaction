@@ -1,194 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_upward" />
-    <style>
-        body {
-            margin: 0;
-            height: 2000px;
-        }
-        section {
-            width: 100%;
-            height: 100vh;
-            text-align: center;
-        }
-        section:nth-child(odd) {
-            background-color: rgb(233, 249, 255);
-        }
-        .wrapper {
-            padding-top: 88px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        h1 {
-            color: skyblue;
-            font-size: 48px;
-        }
-        h2 {
-            font-size: 32px;
-        }
-        h3 {
-            font-size: 24px;
-            font-weight: 300;
-        }
-
-        .btns {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 10;
-        }
-        .btns .container {
-            position: relative;
-            max-width: 900px;
-            padding: 20px;
-            background-color: #333;
-            margin: auto;
-        }
-        .btns__menu {
-            display: flex;
-            justify-content: center;
-        }
-
-        .btns__menu .btn {
-            font-size: 16px;
-            font-weight: 600;
-            color: #193a40;
-            width: 150px;
-            height: 40px;
-            border-radius: 6px;
-            margin: 4px;
-            cursor: pointer;
-            background-color: #9ad2d9;
-        }
-
-        .btns__menu .btn:hover {
-            background-color: white;
-            /* border: 1px solid white; */
-        }
-        button {
-            border: none;
-            outline: none;
-        }
-        .arrow-up {
-            position: fixed;
-            bottom: 60px;
-            right: 50px;
-            width: 70px;
-            height: 70px;
-            color: white;
-            background-color: skyblue;
-            border-radius: 50%;
-            opacity: 0;
-            transition: opacity .3s;
-        }
-        .arrow-up span {
-            font-size: 50px;
-        }
-        .arrow-up.show {
-            opacity: 1;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SUBIN Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <button class="arrow-up">
-        <span class="material-symbols-outlined">
-arrow_upward
-</span>
-    </button>
-    <div class="btns">
-        <div class="container">
-            <div class="btns__menu">
-                <button class="btn home">Home</button>
-                <button class="btn about">about</button>
-                <button class="btn skills">skills</button>
-                <button class="btn works">works</button>
-                <button class="btn contact">contact</button>
-            </div>
-        </div>
+
+  <section class="intro-section" id="intro">
+    <div class="intro-copy">
+      <p>PORTFOLIO</p>
+      <h1>
+        Every click<br />
+        has a reason.
+      </h1>
     </div>
 
-    <section id="home">
-        <div class="wrapper">
-            <h1>Home</h1>
-            <h2>Lorem ipsum dolor sit amet.</h2>
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, voluptatum necessitatibus. Facilis libero rem debitis ab beatae possimus esse eius, perspiciatis perferendis modi sapiente fuga nobis vitae, laudantium illo fugit?</h3>
-        </div>
-    </section>
-    <section id="about">
-        <div class="wrapper">
-            <h1>About</h1>
-            <h2>Lorem ipsum dolor sit amet.</h2>
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, voluptatum necessitatibus. Facilis libero rem debitis ab beatae possimus esse eius, perspiciatis perferendis modi sapiente fuga nobis vitae, laudantium illo fugit?</h3>
-        </div>
-    </section>
-    <section id="skills">
-        <div class="wrapper">
-            <h1>skills</h1>
-            <h2>Lorem ipsum dolor sit amet.</h2>
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, voluptatum necessitatibus. Facilis libero rem debitis ab beatae possimus esse eius, perspiciatis perferendis modi sapiente fuga nobis vitae, laudantium illo fugit?</h3>
-        </div>
-    </section>
-    <section id="works">
-        <div class="wrapper">
-            <h1>works</h1>
-            <h2>Lorem ipsum dolor sit amet.</h2>
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, voluptatum necessitatibus. Facilis libero rem debitis ab beatae possimus esse eius, perspiciatis perferendis modi sapiente fuga nobis vitae, laudantium illo fugit?</h3>
-        </div>
-    </section>
-    <section id="contact">
-        <div class="wrapper">
-            <h1>contact</h1>
-            <h2>Lorem ipsum dolor sit amet.</h2>
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, voluptatum necessitatibus. Facilis libero rem debitis ab beatae possimus esse eius, perspiciatis perferendis modi sapiente fuga nobis vitae, laudantium illo fugit?</h3>
-        </div>
-    </section>
+    <div class="card-stage">
+      <div class="back-message">
+        클릭 한 번에도<br />
+        이유가 있어야 한다고 믿습니다.
+      </div>
 
-    <script>
-        const arrowUp = document.querySelector('.arrow-up');
-        document.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                arrowUp.classList.add('show');
-            } else {
-                arrowUp.classList.remove('show');
-            }
-            console.log(window.scrollY)
-        })
+      <div class="card-stack">
 
-        const btnHome = document.querySelector('.home');
-        const sectionHome = document.querySelector('#home');
-        btnHome.addEventListener('click', function() {
-            sectionHome.scrollIntoView({behavior: 'smooth', block: 'center'});
-        })
+        <!-- 가장 먼저 떨어지는 명함 카드 -->
+        <button class="project-card name-card main-card" data-category="all">
+          <div class="name-card-top">
+            <p>CONNECT STORIES!<br />MAKE CULTURE</p>
+            <p>VARIETY<br />IDEAL</p>
+            <p>ENJOYABLE<br />BENEFICIAL</p>
+          </div>
 
-        const btnAbout = document.querySelector('.about');
-        const sectionAbout = document.querySelector('#about');
-        btnAbout.addEventListener('click', function() {
-            sectionAbout.scrollIntoView({behavior: 'smooth', block: 'center'});
-        })
+          <div class="subin-logo">
+            SUBIN
+          </div>
 
-        const btnSkills = document.querySelector('.skills');
-        const sectionSkills = document.querySelector('#skills');
-        btnSkills.addEventListener('click', function() {
-            sectionSkills.scrollIntoView({behavior: 'smooth', block: 'center'});
-        })
+          <span>All Works</span>
+        </button>
 
-        const btnWorks = document.querySelector('.works');
-        const sectionWorks = document.querySelector('#works');
-        btnWorks.addEventListener('click', function() {
-            sectionWorks.scrollIntoView({behavior: 'smooth', block: 'center'});
-        })
+        <button class="project-card card-1" data-category="poster">
+          <span>Poster</span>
+        </button>
 
-        const btnContact = document.querySelector('.contact');
-        const sectionContact = document.querySelector('#contact');
-        btnContact.addEventListener('click', function() {
-            sectionContact.scrollIntoView({behavior: 'smooth', block: 'center'});
-        })
+        <button class="project-card card-2" data-category="uxui">
+          <span>UX/UI</span>
+        </button>
 
-    </script>
+        <button class="project-card card-3" data-category="web">
+          <span>Web</span>
+        </button>
 
+        <button class="project-card card-4" data-category="graphic">
+          <span>Graphic</span>
+        </button>
+
+      </div>
+    </div>
+
+    <p class="scroll-hint">Choose a card</p>
+  </section>
+
+  <section class="portfolio-section" id="portfolio">
+    <div class="portfolio-header">
+      <div>
+        <p id="selectedCategory">Selected Works</p>
+        <h2>My Projects</h2>
+      </div>
+      <button class="back-btn" id="backBtn">Back to cards</button>
+    </div>
+
+    <div class="project-grid">
+      <article class="grid-item">
+        <div class="thumb thumb-1"></div>
+        <p>Project 01</p>
+        <h3>Poster Design</h3>
+      </article>
+
+      <article class="grid-item">
+        <div class="thumb thumb-2"></div>
+        <p>Project 02</p>
+        <h3>UX/UI Renewal</h3>
+      </article>
+
+      <article class="grid-item">
+        <div class="thumb thumb-3"></div>
+        <p>Project 03</p>
+        <h3>Interactive Website</h3>
+      </article>
+
+      <article class="grid-item">
+        <div class="thumb thumb-4"></div>
+        <p>Project 04</p>
+        <h3>Graphic System</h3>
+      </article>
+
+      <article class="grid-item">
+        <div class="thumb thumb-5"></div>
+        <p>Project 05</p>
+        <h3>Visual Archive</h3>
+      </article>
+
+      <article class="grid-item">
+        <div class="thumb thumb-6"></div>
+        <p>Project 06</p>
+        <h3>Brand Concept</h3>
+      </article>
+    </div>
+  </section>
+
+  <div class="transition-card" id="transitionCard"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
