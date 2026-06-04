@@ -3,8 +3,8 @@
 
 :root {
   --cream: #F5F0EB;
-  --ink:   #0D0D0D;
-  --gray:  #888;
+  --ink: #0D0D0D;
+  --gray: #888;
   --card-w: 200px;
   --card-h: 320px;
   --radius: 18px;
@@ -18,12 +18,19 @@ html, body {
   background: var(--cream);
   font-family: 'DM Sans', sans-serif;
   color: var(--ink);
-  cursor: default;
   overflow-x: hidden;
+  overflow-y: auto;
 }
+
 body {
-  height: 420vh;
+  min-height: 360vh;
 }
+
+body.portfolio-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
 .hidden { display: none !important; }
 
 /* ── INTRO ── */
@@ -36,6 +43,7 @@ body {
   z-index: 10;
   background: var(--cream);
   transition: opacity 0.6s var(--ease-out);
+  will-change: transform, opacity;
 }
 
 #intro.fade-out {
@@ -57,18 +65,18 @@ body {
   height: var(--card-h);
   perspective: 1000px;
   cursor: pointer;
-
-  /* Drop from above */
   animation: cardDrop 1.1s var(--ease-spring) 0.3s both;
+  will-change: transform, opacity;
 }
 
 @keyframes cardDrop {
   from { transform: translateY(-140vh) rotate(-8deg); opacity: 0; }
-  to   { transform: translateY(0)      rotate(0deg);  opacity: 1; }
+  to { transform: translateY(0) rotate(0deg); opacity: 1; }
 }
 
 .card__inner {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   position: relative;
   transform-style: preserve-3d;
   border-radius: var(--radius);
@@ -80,7 +88,8 @@ body {
   transform: rotateY(180deg);
 }
 
-.card__front, .card__back {
+.card__front,
+.card__back {
   position: absolute;
   inset: 0;
   border-radius: var(--radius);
@@ -88,7 +97,6 @@ body {
   -webkit-backface-visibility: hidden;
 }
 
-/* Front */
 .card__front {
   background: linear-gradient(145deg, #FAFAFA 0%, #EDEDE8 100%);
   display: flex;
@@ -103,16 +111,15 @@ body {
   font-size: 56px;
   line-height: 1;
   color: var(--ink);
-  letter-spacing: -1px;
 }
 
-.card__info { }
 .card__name {
   font-family: 'Bebas Neue', cursive;
   font-size: 32px;
   letter-spacing: 4px;
   color: var(--ink);
 }
+
 .card__role {
   font-size: 11px;
   letter-spacing: 2px;
@@ -125,23 +132,24 @@ body {
   display: flex;
   gap: 6px;
 }
+
 .card__dots span {
-  width: 8px; height: 8px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--ink);
   opacity: 0.15;
 }
+
 .card__dots span:first-child { opacity: 0.8; }
 .card__dots span:nth-child(2) { opacity: 0.4; }
 
-/* Back */
 .card__back {
   background: var(--ink);
   transform: rotateY(180deg);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius);
 }
 
 .card__back-text {
@@ -153,7 +161,6 @@ body {
   line-height: 1.3;
 }
 
-/* Hint */
 .intro__hint {
   position: absolute;
   bottom: 40px;
@@ -162,11 +169,12 @@ body {
   text-transform: uppercase;
   color: var(--gray);
   animation: blink 2s ease-in-out 1.8s infinite;
+  pointer-events: none;
 }
 
 @keyframes blink {
   0%, 100% { opacity: 0.5; }
-  50%       { opacity: 1; }
+  50% { opacity: 1; }
 }
 
 /* ── FAN SCENE ── */
@@ -179,6 +187,7 @@ body {
   justify-content: center;
   background: var(--cream);
   z-index: 9;
+  will-change: transform, opacity;
 }
 
 .fan__title {
@@ -191,6 +200,7 @@ body {
   gap: 16px;
   align-items: baseline;
 }
+
 .fan__title-accent {
   color: var(--gray);
   font-family: 'DM Serif Display', serif;
@@ -198,7 +208,6 @@ body {
   letter-spacing: 2px;
 }
 
-/* ── FAN STAGE ── */
 .fan__stage {
   position: relative;
   width: var(--card-w);
@@ -207,7 +216,6 @@ body {
   perspective: 1200px;
 }
 
-/* Each card sits on the stage, starts stacked, fans out */
 .fan-card {
   position: absolute;
   inset: 0;
@@ -221,14 +229,12 @@ body {
   box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.08);
   overflow: hidden;
   user-select: none;
-
-  /* initial stacked state */
-  transform: translateY(0px) rotateY(0deg);
   opacity: 0;
   transition:
     transform 0.65s var(--ease-spring),
     box-shadow 0.3s ease,
     opacity 0.4s ease;
+  will-change: transform, opacity;
 }
 
 .fan-card[style*="--idx:0"] { background-color: #E8DDD0; z-index: 5; }
@@ -237,12 +243,10 @@ body {
 .fan-card[style*="--idx:3"] { background-color: #FFF0D9; z-index: 2; }
 .fan-card[style*="--idx:4"] { background-color: #0A0A0A; z-index: 1; }
 
-/* Fanned-out positions — set by JS adding .fanned class + inline custom props */
 .fan__stage.fanned .fan-card {
   opacity: 1;
 }
 
-/* Card internals */
 .fan-card__texture {
   position: absolute;
   inset: 0;
@@ -259,7 +263,8 @@ body {
 .fan-card__hover-label {
   position: absolute;
   bottom: 60px;
-  left: 0; right: 0;
+  left: 0;
+  right: 0;
   text-align: center;
   font-family: 'Bebas Neue', cursive;
   font-size: 36px;
@@ -274,7 +279,8 @@ body {
 .fan-card__sub {
   position: absolute;
   bottom: 36px;
-  left: 0; right: 0;
+  left: 0;
+  right: 0;
   text-align: center;
   font-size: 10px;
   letter-spacing: 2px;
@@ -296,16 +302,18 @@ body {
   opacity: 0.25;
 }
 
-/* Dark card text overrides */
 .fan-card[data-color="#1C1C2E"] .fan-card__hover-label,
 .fan-card[data-color="#1C1C2E"] .fan-card__sub,
-.fan-card[data-color="#1C1C2E"] .fan-card__num { color: #A3F7BF; }
+.fan-card[data-color="#1C1C2E"] .fan-card__num {
+  color: #A3F7BF;
+}
 
 .fan-card[data-color="#0A0A0A"] .fan-card__hover-label,
 .fan-card[data-color="#0A0A0A"] .fan-card__sub,
-.fan-card[data-color="#0A0A0A"] .fan-card__num { color: #E0E0E0; }
+.fan-card[data-color="#0A0A0A"] .fan-card__num {
+  color: #E0E0E0;
+}
 
-/* Hover state */
 .fan__stage.fanned .fan-card:hover {
   box-shadow: 0 40px 80px rgba(0,0,0,0.22), 0 8px 24px rgba(0,0,0,0.12);
   z-index: 20 !important;
@@ -357,7 +365,6 @@ body {
   padding: 0 0 60px;
 }
 
-/* Header */
 .port-header {
   position: sticky;
   top: 0;
@@ -384,10 +391,15 @@ body {
   font-family: 'DM Sans', sans-serif;
 }
 
-.port-back:hover { background: var(--ink); color: var(--cream); }
+.port-back:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
 
-/* dark page back button */
-#portfolioPage.dark-page .port-back:hover { background: var(--cream); color: var(--ink); }
+#portfolioPage.dark-page .port-back:hover {
+  background: var(--cream);
+  color: var(--ink);
+}
 
 .port-title {
   font-family: 'Bebas Neue', cursive;
@@ -403,7 +415,6 @@ body {
   opacity: 0.45;
 }
 
-/* Grid */
 .port-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -412,7 +423,7 @@ body {
 }
 
 .port-item {
-  aspect-ratio: 3/4;
+  aspect-ratio: 3 / 4;
   border-radius: 14px;
   overflow: hidden;
   position: relative;
@@ -424,7 +435,10 @@ body {
 }
 
 @keyframes itemIn {
-  to { opacity: 1; transform: translateY(0); }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .port-item__bg {
@@ -433,11 +447,15 @@ body {
   transition: transform 0.5s var(--ease-out);
 }
 
-.port-item:hover .port-item__bg { transform: scale(1.05); }
+.port-item:hover .port-item__bg {
+  transform: scale(1.05);
+}
 
 .port-item__label {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   padding: 24px 20px 20px;
   background: linear-gradient(transparent, rgba(0,0,0,0.5));
   font-size: 14px;
@@ -446,14 +464,16 @@ body {
   font-weight: 500;
 }
 
-/* Dark / light page variants applied via JS */
 #portfolioPage.dark-page {
   background: #0D0D0D;
   color: #F5F0EB;
 }
-#portfolioPage.dark-page .port-header { background: rgba(13,13,13,0.85); border-color: rgba(255,255,255,0.08); }
 
-/* ── SCROLL HINT for fan scene ── */
+#portfolioPage.dark-page .port-header {
+  background: rgba(13,13,13,0.85);
+  border-color: rgba(255,255,255,0.08);
+}
+
 .fan__hint {
   position: absolute;
   bottom: 40px;
@@ -462,21 +482,27 @@ body {
   text-transform: uppercase;
   color: var(--gray);
   animation: blink 2s ease-in-out infinite;
-}
-.scroll-lock {
-  overflow: hidden;
-}
-
-#intro,
-#fanScene {
-  will-change: transform, opacity;
-}
-
-.fan-card {
-  will-change: transform, opacity;
-}
-
-.intro__hint,
-.fan__hint {
   pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --card-w: 160px;
+    --card-h: 260px;
+  }
+
+  .fan__title {
+    top: 12%;
+    font-size: 36px;
+    letter-spacing: 4px;
+  }
+
+  .port-header {
+    padding: 20px;
+  }
+
+  .port-grid {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
 }
