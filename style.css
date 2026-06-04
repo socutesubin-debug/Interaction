@@ -13,14 +13,17 @@
 }
 
 html, body {
-  width: 100%; height: 100%;
-  overflow: hidden;
+  width: 100%;
+  min-height: 100%;
   background: var(--cream);
   font-family: 'DM Sans', sans-serif;
   color: var(--ink);
   cursor: default;
+  overflow-x: hidden;
 }
-
+body {
+  height: 420vh;
+}
 .hidden { display: none !important; }
 
 /* ── INTRO ── */
@@ -459,4 +462,21 @@ html, body {
   text-transform: uppercase;
   color: var(--gray);
   animation: blink 2s ease-in-out infinite;
+}
+.scroll-lock {
+  overflow: hidden;
+}
+
+#intro,
+#fanScene {
+  will-change: transform, opacity;
+}
+
+.fan-card {
+  will-change: transform, opacity;
+}
+
+.intro__hint,
+.fan__hint {
+  pointer-events: none;
 }
